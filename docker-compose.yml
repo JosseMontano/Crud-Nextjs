@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+
+  postgres:
+    image: postgres:14.3
+    restart: always
+    container_name: postgres_db
+    ports:
+      - "5532:5432"
+    environment:
+      POSTGRES_PASSWORD: ${PG_DB_PASSWORD}
+      POSTGRES_DB: ${PG_DB_NAME}
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+
+
+# db -> the name of the application
+# image -> the name of the image
+# restart -> When it have a error restart 
+# POSTGRES_DB -> name of the database
+# container_name -> rename the container
